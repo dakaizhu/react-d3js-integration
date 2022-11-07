@@ -1,0 +1,28 @@
+
+#chart{
+    margin: 25px auto;
+    width: 1000px;
+    position: relative;
+  }
+  
+.line-chart-tooltip { 
+    text-align: start;
+    border: 1px solid #ccc;
+    position: absolute;
+    padding: 5px;
+    background-color: #b12d3a; 
+    display: none;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    pointer-events: none;
+  }
+
+.price .date {
+    font-weight: bold;
+}
+
+.line-chart-axis {
+  font-size: 18px;
+  shape-rendering: geometricPrecision;
+  color: #fff; 
+}

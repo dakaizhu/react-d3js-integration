@@ -1,0 +1,40 @@
+.d3-app {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.nav-links  { 
+  background-color: #282c34;
+  display: flex;
+  padding: 5px 15px;
+}
+ 
+.nav-link-basic {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link { 
+  @extend .nav-link-basic;
+  font-weight: 400;
+  color: #04AA6D; 
+  text-decoration: none;
+}
+
+.nav-active-link { 
+  @extend .nav-link-basic;
+  font-weight: 600;   
+  color: #fff; 
+  text-decoration: underline;
+  pointer-events: none;
+}

@@ -1,0 +1,26 @@
+#chart{
+    width: 800px;
+    height: 800px;
+    background-color: transparent;
+    margin: 25px auto;
+    position: relative
+  }
+  
+  .tooltip {
+    text-align: start;
+    border: 1px solid #ccc;
+    position: absolute;
+    padding: 5px;
+    background-color: #b12d3a; 
+    opacity: 0; 
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .axis {
+    font-size: 18px;
+    shape-rendering: geometricPrecision;
+    color: #fff; 
+  }
+
+ 
