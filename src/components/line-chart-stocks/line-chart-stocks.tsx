@@ -5,14 +5,14 @@ import { extent } from "d3-array";
 import { axisBottom, axisLeft } from "d3-axis"; 
 import { bisector } from "d3-array";
 
-import data from "./data.json";
+import data from "./stocks.json";
 import { LinePoint } from "./types";
-import "./line-chart.scss";
+import "./line-chart-stocks.scss";
 import { timeFormat, timeParse } from "d3-time-format";
 import { Dimensions } from "./types";
 import { line } from "d3-shape";
 
-export const PriceLineChart : FC = () => {
+export const StocksLineChart : FC = () => {
     const linechartSvgRef = useRef(null);
     const linechartTooltipRef = useRef(null);
 
@@ -115,8 +115,8 @@ export const PriceLineChart : FC = () => {
                    .raise();
                 
                 tooltip.style("display", "block")
-                       .style("top", yScale(yAccessor(stock)) + 150 + "px")
-                       .style("left", xScale(xAccessor(stock)) + 400 + "px");
+                       .style("top", yScale(yAccessor(stock)) + "px")
+                       .style("left", xScale(xAccessor(stock)) + "px");
                 
                 tooltip.select(".price").text(`price: $${yAccessor(stock)}`);
                 tooltip.select(".date").text(`date: ${timeFormat("%B %-d, %Y")(xAccessor(stock))}`);                
@@ -128,12 +128,12 @@ export const PriceLineChart : FC = () => {
     }
 
     return (
-        <>    
+        <div className="line-chart" >
             <div ref={linechartTooltipRef} className="line-chart-tooltip">
                 <div className="price"></div>
                 <div className="date"></div>
-            </div>
+            </div> 
             <svg ref={linechartSvgRef} />
-        </>
+        </div>
     )
 }

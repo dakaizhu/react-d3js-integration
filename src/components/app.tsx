@@ -1,6 +1,6 @@
 import React from "react";
 import "./app.scss" 
-import { PriceLineChart } from "./line-chart/line-chart";
+import { StocksLineChart } from "./line-chart-stocks/line-chart-stocks";
  
 import { WeatherScatterPlot } from "./scatter-plot-weather/scatter-plot-weather";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom"; 
@@ -20,7 +20,7 @@ export const App = () => {
                 <Routes>
                     <Route path="/" element={<Navigate replace to="/scatter-plot" />} />
                     <Route path="/scatter-plot" element={<WeatherScatterPlot />} />
-                    <Route path="/line-chart" element={<PriceLineChart />} />
+                    <Route path="/line-chart" element={<StocksLineChart />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
           </div>  
