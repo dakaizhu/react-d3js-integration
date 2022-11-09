@@ -1,0 +1,74 @@
+[
+ {
+   "range": "<5",
+   "population": 19912018
+ },
+ {
+   "range": "5-9",
+   "population": 20501982
+ },
+ {
+   "range": "10-14",
+   "population": 20679786
+ },
+ {
+   "range": "15-19",
+   "population": 21354481
+ },
+ {
+   "range": "20-24",
+   "population": 22604232
+ },
+ {
+   "range": "25-29",
+   "population": 21698010
+ },
+ {
+   "range": "30-34",
+   "population": 21183639
+ },
+ {
+   "range": "35-39",
+   "population": 19855782
+ },
+ {
+   "range": "40-44",
+   "population": 20796128
+ },
+ {
+   "range": "45-49",
+   "population": 21370368
+ },
+ {
+   "range": "50-54",
+   "population": 22525490
+ },
+ {
+   "range": "55-59",
+   "population": 21001947
+ },
+ {
+   "range": "60-64",
+   "population": 18415681
+ },
+ {
+   "range": "65-69",
+   "population": 14547446
+ },
+ {
+   "range": "70-74",
+   "population": 10587721
+ },
+ {
+   "range": "75-79",
+   "population": 7730129
+ },
+ {
+   "range": "80-84",
+   "population": 5811429
+ },
+ {
+   "range": "≥85",
+   "population": 5938752
+ }
+]

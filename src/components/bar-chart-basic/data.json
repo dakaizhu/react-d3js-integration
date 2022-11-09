@@ -1,0 +1,66 @@
+[
+ {
+   "framework": "jQuery",
+   "score": 43.3
+ },
+ {
+   "framework": "React.js",
+   "score": 35.9
+ },
+ {
+   "framework": "Angular",
+   "score": 25.1
+ },
+ {
+   "framework": "ASP.NET",
+   "score": 21.9
+ },
+ {
+   "framework": "Express",
+   "score": 21.2
+ },
+ {
+   "framework": ".NET Core",
+   "score": 19.1
+ },
+ {
+   "framework": "Vue.js",
+   "score": 17.3
+ },
+ {
+   "framework": "Spring",
+   "score": 16.4
+ },
+ {
+   "framework": "Angular.js",
+   "score": 16.1
+ },
+ {
+   "framework": "Django",
+   "score": 14.2
+ },
+ {
+   "framework": "Flask",
+   "score": 14.2
+ },
+ {
+   "framework": "Laravel",
+   "score": 11.1
+ },
+ {
+   "framework": "Rails",
+   "score": 7
+ },
+ {
+   "framework": "Symfony",
+   "score": 14.4
+ },
+ {
+   "framework": "Gatsby",
+   "score": 4
+ },
+ {
+   "framework": "Drupal",
+   "score": 3.2
+ }
+]

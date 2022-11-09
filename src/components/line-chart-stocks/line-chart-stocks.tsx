@@ -12,6 +12,10 @@ import { timeFormat, timeParse } from "d3-time-format";
 import { Dimensions } from "./types";
 import { line } from "d3-shape";
 
+/* 
+    https://observablehq.com/@d3/line-with-tooltip?collection=@d3/charts 
+*/
+
 export const StocksLineChart : FC = () => {
     const linechartSvgRef = useRef(null);
     const linechartTooltipRef = useRef(null);
