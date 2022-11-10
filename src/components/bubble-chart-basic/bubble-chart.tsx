@@ -55,64 +55,49 @@ export const BubbleChart : FC = () => {
         const {  label, value, group, title } = params; 
 
         // Compute the values.
-        const D = map(bubbles, d => d);
         const V = map(bubbles, value) as number[];
-        const G = group == null ? null : map(bubbles, group);
+        const G = map(bubbles, group);
         const I = range(V.length).filter(i => V[i] > 0);
        
         // Unique the groups
-        const groups = G && new InternSet(I.map(i => G[i]));                        
+        const groups = new InternSet(I.map(i => G[i]));                        
         
         // Construct scales
-        const color = groups && scaleOrdinal(groups, schemeTableau10);
-    
-         // Compute labels and titles.
-        const L = label == null ? null : map(bubbles, label);
-        const T = title === undefined ? L : title == null ? null : map(bubbles, title);
-    
+        const color = scaleOrdinal(groups, schemeTableau10);
+
          // Compute layout: create a 1-deep hierarchy, and pack it.
-        const root = pack()
-        .size([dimensions.areaWidth, dimensions.areaHeight])
-        .padding(3)
-        (hierarchy({children: I})
-        .sum(s => V[(s as unknown) as number]));
+        const root = pack().size([dimensions.areaWidth, dimensions.areaHeight]).padding(3)(hierarchy({children: I}).sum(p => V[(p as unknown) as number]));
 
         const svg = select(svgRef.current);
         const container = svg.append("g")
-                            .attr("transform", `translate(${dimensions.margin}, ${dimensions.margin})`)
-                            .attr("fill", "#ccc")
-                            .attr("font-size", 12)
-                            .attr("font-family", "sans-serif")
-                            .attr("text-anchor", "middle");
+                             .attr("transform", `translate(${dimensions.margin}, ${dimensions.margin})`)
+                             .classed("container", true);
  
-        const leaf = container.selectAll("a")
+        const leaf = container.selectAll("g")
                         .data(root.leaves())
-                        .join("a")
+                        .join("g")
                         .attr("transform", d => `translate(${d.x},${d.y})`);
         
-        leaf.append("circle")
-            .attr("fill", G ? (d => color ? color(G[d.data as number]) : "none") : "none")
+        leaf.append("circle")          
+            .attr("fill", d => color(G[d.data as number]))
             .attr("fill-opacity", 0.7)
-            .attr("r", d => d.r);
-        
-        if(T) {
-            leaf.append("title").text(d => T[d.data as number]);
-        }
-       
+            .attr("r", d => d.r);  
 
-        if(L) { 
-            console.log(L);
-            leaf.append("text") 
-                .selectAll("tspan")
-                .data(d => `${L[d.data as number]}`.split(/\n/g))
-                .join("tspan")
-                .attr("x", 0)
-                .attr("y", (d, i, D) => `${i - D.length / 2 + 0.85}em`)
-                .attr("fill-opacity", (d, i, D) => i === D.length - 1 ? 0.7 : null)
-                .classed("label",true) 
-                .text(d => d);
-        } 
-         
+         // Compute labels and titles.
+        const L = map(bubbles, label);
+        const T = map(bubbles, title);
+     
+        T && leaf.append("title").text(d => T[d.data as number]); 
+       
+        L && leaf.append("text") 
+                 .selectAll("tspan")
+                 .data(d => `${L[d.data as number]}`.split(/\n/g))
+                 .join("tspan")
+                 .attr("x", 0)
+                 .attr("y", (d, i, D) => `${i - D.length / 2 + 0.75}em`)
+                 .attr("fill-opacity", (d, i, D) => i === D.length - 1 ? 0.7: null)
+                 .classed("label", true) 
+                 .text(d => d);
     }
 
     return (
