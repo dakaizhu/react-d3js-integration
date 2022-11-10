@@ -10,4 +10,20 @@
     font-family:Arial, Helvetica, sans-serif;
     shape-rendering: geometricPrecision;
     color: #fff; 
-  }
+}
+
+.score {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    fill: #d2c0f2;
+    text-anchor: middle;
+    font-size: 12px;
+} 
+
+.axis-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    fill: #fff;
+    text-anchor: middle;
+    font-size: 16px;
+}

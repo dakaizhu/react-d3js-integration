@@ -19,9 +19,9 @@ export const PopulationPiechart : FC = () => {
 
     useEffect(() => {
        let dimensions : Dimensions = {
-          width : 720,
-          height: 720,
-          margin: 10,
+          width : 750,
+          height: 750,
+          margin: 50,
           areaHeight : 0,
           areaWidth: 0,
        }
@@ -45,7 +45,7 @@ export const PopulationPiechart : FC = () => {
         const container = svg.append("g").attr("transform", `translate(${dimensions.margin}, ${dimensions.margin})`);
         const innerRadius = 0;
         const outerRadius = Math.min(dimensions.width, dimensions.height) / 2; 
-        const labelRadius = (innerRadius * 0.2 + outerRadius * 0.8);
+        const labelRadius = (innerRadius * 0.02 + outerRadius * 0.8);
         const padAngle = 1 / outerRadius;
 
         //scales
@@ -67,8 +67,7 @@ export const PopulationPiechart : FC = () => {
                                .attr("transform", `translate(${dimensions.areaHeight / 2}, ${dimensions.areaWidth / 2 })`);
         
         const stroke = innerRadius > 0 ? "none" : "#fff";
-
-        //@ts-ignore
+      
         group.selectAll("path").data(slices)
                                .join("path")
                                //@ts-ignore

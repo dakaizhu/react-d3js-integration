@@ -16,12 +16,12 @@ export const BasicBarchart : FC = () => {
     useEffect(() => {  
  
         let dimensions : BarchartDimensions = {
-            width: 1100,
-            height: 600,
+            width: 1200,
+            height: 800,
             margins: {
-                top: 20,
-                buttom: 20,
-                left: 20,
+                top: 100,
+                buttom: 100,
+                left: 100,
                 right: 20
             },
             containerWidth: 0,
@@ -37,7 +37,7 @@ export const BasicBarchart : FC = () => {
          .attr("viewBox", [0, 0,  dimensions.width, dimensions.height])  
          .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
 
-         const sources = data.map(d => d as Source);
+         const sources = data.map(d => d as Source).sort((a,b) => a.score - b.score);
  
          draw(sources, dimensions);   
   
@@ -50,7 +50,7 @@ export const BasicBarchart : FC = () => {
                              .attr("transform", `translate(${dimensions.margins.top}, ${dimensions.margins.left})`);
        
         const xScale = scaleBand().domain(sources.map(src => src.framework)).range([dimensions.margins.left, dimensions.containerWidth]).padding(0.1);
-        const yScale = scaleLinear().domain([0, max(sources.map(src => src.score))] as number[]).range([dimensions.containerHeight, 0]);
+        const yScale = scaleLinear().domain([0, max(sources.map(src => src.score))] as number[]).nice().range([dimensions.containerHeight, 0]);
        
         const colorScale = scaleOrdinal(schemeCategory10); 
        
@@ -61,13 +61,36 @@ export const BasicBarchart : FC = () => {
                  .attr("y", d => yScale(d.score))
                  .attr("width", xScale.bandwidth)
                  .attr("height", d => dimensions.containerHeight - yScale(d.score))
-                 .attr("fill", d => colorScale(d.framework))
+                 .attr("fill", d => colorScale(d.framework)) 
         
+        container.selectAll("text")
+                .data(sources)
+                .join("text")
+                .text(d => d.score)
+                .attr("x", d => xScale.bandwidth()/2 + (xScale(d.framework) as number))
+                .attr("y", d => yScale(d.score) - 5)
+                .classed("score", true)
+
         const xAxis = axisBottom(xScale);
         const yAxis = axisLeft(yScale);
 
-        container.append("g").attr("transform", `translate(0, ${dimensions.containerHeight})`).call(xAxis).classed('bar-chart-axis', true);;
-        container.append("g").attr("transform", `translate(${dimensions.margins.top}, 0)`).call(yAxis);
+       const xAxisGroup = container.append("g").attr("transform", `translate(0, ${dimensions.containerHeight})`).call(xAxis).classed('bar-chart-axis', true);
+       const yAxisGroup = container.append("g").attr("transform", `translate(${dimensions.margins.top}, 0)`).call(yAxis).classed('bar-chart-axis', true);
+    
+       xAxisGroup.append('text')
+       .attr('x', dimensions.containerWidth / 2)
+       .attr('y', dimensions.margins.buttom - 50)
+       .classed("axis-label", true)
+       .text('Frameworks / Libraries');
+
+       yAxisGroup.append('text')
+       .attr('x', -dimensions.containerHeight / 2)
+       .attr('y', -dimensions.margins.left + 50)
+       .classed("axis-label", true)
+       .text('Score')
+       .style('transform', 'rotate(270deg)')
+       .style('text-anchor', 'middle'); 
+    
     }
 
     return (
