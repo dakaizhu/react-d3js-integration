@@ -1,50 +1,42 @@
 [
- {
-   "id": "BROCHURE.BOOK_A",
-   "value": 39382
- },
- {
-   "id": "BROCHURE.BOOK_B",
-   "value": 38124
- },
- {
-   "id": "BROCHURE.BOOK_C",
-   "value": 6714
- },
- {
-   "id": "CLOSTHING.TSHIRT_D",
-   "value": 74334
- }, 
- {
-   "id": "CLOSTHING.TSHIRT_E",
-   "value": 13534
- },
- {
-   "id": "CLOSTHING.TSHIRT_F",
-   "value": 5731
- },
- {
-   "id": "BAGS.G",
-   "value": 7840
- },
- {
-   "id": "BAGS.H",
-   "value": 5914
- },
- {
-   "id": "BAGS",
-   "value": 17010
- },
- {
-   "id": "UNKNOWN.Category2",
-   "value": 5842
- },
- {
-   "id": "UNKNOWN.Category3",
-   "value": 16540
- },
- {
-  "id": "UNKNOWN",
-  "value": 26340
-}
+	{
+		"id": "Plant.Mercury",
+		"value": 39382
+	},
+	{
+		"id": "Plant.Earth",
+		"value": 38124
+	},
+	{
+		"id": "Plant.Mars",
+		"value": 6714
+	},
+	{
+		"id": "Plant.Jupiter",
+		"value": 74334
+	},
+	{
+		"id": "Plant.Saturn",
+		"value": 13534
+	},
+	{
+		"id": "Plant.Uranus",
+		"value": 5731
+	},
+	{
+		"id": "Plant.Moon",
+		"value": 7840
+	},
+	{
+		"id": "Plant.Neptune",
+		"value": 5914
+	},
+	{
+		"id": "Plant.Centaurs",
+		"value": 17010
+	},
+	{
+		"id": "UNKNOWN",
+		"value": 26340
+	}
 ]

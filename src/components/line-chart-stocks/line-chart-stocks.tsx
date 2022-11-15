@@ -119,7 +119,7 @@ export const StocksLineChart : FC = () => {
                    .raise();
                 
                 tooltip.style("display", "block")
-                       .style("top", yScale(yAccessor(stock)) + "px")
+                       .style("top", yScale(yAccessor(stock)) + 35 + "px")
                        .style("left", xScale(xAccessor(stock)) + "px");
                 
                 tooltip.select(".price").text(`price: $${yAccessor(stock)}`);
