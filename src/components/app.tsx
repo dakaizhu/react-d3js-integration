@@ -7,6 +7,7 @@ import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import { PopulationPiechart } from "./pie-chart-population/pie-chart-population";
 import { BasicBarchart } from "./bar-chart-basic/bar-chart-basic";
 import { BubbleChart } from "./bubble-chart-basic/bubble-chart";
+import { HistogramChart } from "./histogram-chart/hsitogram-chart";
 
 export const App = () => {
     return ( 
@@ -27,6 +28,9 @@ export const App = () => {
                 <NavLink to="/basic-bubble-chart" className={({ isActive }) => (isActive ? "nav-active-link" : "nav-link")}>
                     Basic Bubble Chart
                 </NavLink> 
+                <NavLink to="/basic-histogram-chart" className={({ isActive }) => (isActive ? "nav-active-link" : "nav-link")}>
+                    Basic Histogram Chart
+                </NavLink> 
           </div> 
           <div className="d3-app">   
                 <Routes>
@@ -36,6 +40,7 @@ export const App = () => {
                     <Route path="/pie-chart" element={<PopulationPiechart />} />
                     <Route path="/basic-bar-chart" element={<BasicBarchart />} />
                     <Route path="/basic-bubble-chart" element={<BubbleChart/> } />
+                    <Route path="/basic-histogram-chart" element={<HistogramChart/> } />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
           </div>  
