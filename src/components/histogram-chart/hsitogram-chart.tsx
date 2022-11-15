@@ -15,13 +15,13 @@ export const HistogramChart : FC = () => {
     const histogramSvgRef = useRef(null);
 
     const dimensions : Dimensions = {
-        width: 1000,
-        height: 500,
+        width: 1100,
+        height: 700,
         margins: {
-            left: 40,
+            left: 50,
             right: 30,
-            top: 20,
-            bottom: 30
+            top: 30,
+            bottom: 50
         } 
     };
  
@@ -58,7 +58,8 @@ export const HistogramChart : FC = () => {
 
         container.append("g")
             .attr("transform", `translate(${dim.margins.left},0)`)
-            .call(yAxis)
+            .classed("axis", true)
+            .call(yAxis) 
             //.call((g) => g.select(".domain").remove())
             .call((g) => g.selectAll(".tick line")
                           .clone()
@@ -67,13 +68,13 @@ export const HistogramChart : FC = () => {
             )
             .call((g) => g.append("text")
                           .attr("x", -dim.margins.left)
-                          .attr("y", 10)
+                          .attr("y", 20)
                           .attr("fill", "currentColor")
                           .attr("text-anchor", "start")
                           .text("↑ Frequency")
             );
 
-           container.append("g")
+        container.append("g")
                     .attr("fill", "steelblue")
                     .selectAll("rect")
                     .data(b)
@@ -87,11 +88,12 @@ export const HistogramChart : FC = () => {
 
         container.append("g")
                  .attr("transform", `translate(0,${dim.height - dim.margins.bottom})`)
+                 .classed("axis", true)
                  .call(xAxis)
                  .call((g) => g
                     .append("text")
                     .attr("x", dim.width - dim.margins.right)
-                    .attr("y", 27)
+                    .attr("y",40)
                     .attr("fill", "currentColor")
                     .attr("text-anchor", "end")
                     .text("Unemployment rate (%) →")
