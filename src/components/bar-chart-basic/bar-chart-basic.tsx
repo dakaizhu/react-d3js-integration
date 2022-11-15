@@ -31,11 +31,7 @@ export const BasicBarchart : FC = () => {
         dimensions.containerHeight = dimensions.height - dimensions.margins.top - dimensions.margins.buttom;
         dimensions.containerWidth = dimensions.width - dimensions.margins.left - dimensions.margins.right;
 
-        select(svgRef.current)
-         .attr("width", dimensions.width)
-         .attr("height", dimensions.height) 
-         .attr("viewBox", [0, 0,  dimensions.width, dimensions.height])  
-         .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
 
          const sources = data.map(d => d as Source).sort((a,b) => a.score - b.score);
  
@@ -45,14 +41,19 @@ export const BasicBarchart : FC = () => {
    
 
     const draw = (sources : Source[], dimensions: BarchartDimensions) => {
-        const svg = select(svgRef.current);
-        const container = svg.append("g")
-                             .attr("transform", `translate(${dimensions.margins.top}, ${dimensions.margins.left})`);
+    
+        const container = select(svgRef.current)
+                            .attr("width", dimensions.width)
+                            .attr("height", dimensions.height) 
+                            .attr("viewBox", [0, 0,  dimensions.width, dimensions.height])  
+                            .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
+                            .append("g")
+                            .attr("transform", `translate(${dimensions.margins.top}, ${dimensions.margins.left})`);
        
         const xScale = scaleBand().domain(sources.map(src => src.framework)).range([dimensions.margins.left, dimensions.containerWidth]).padding(0.1);
         const yScale = scaleLinear().domain([0, max(sources.map(src => src.score))] as number[]).nice().range([dimensions.containerHeight, 0]);
        
-        const colorScale = scaleOrdinal(schemeCategory10); 
+        //const colorScale = scaleOrdinal(schemeCategory10); 
        
         container.selectAll("rect")
                  .data(sources)
@@ -61,7 +62,8 @@ export const BasicBarchart : FC = () => {
                  .attr("y", d => yScale(d.score))
                  .attr("width", xScale.bandwidth)
                  .attr("height", d => dimensions.containerHeight - yScale(d.score))
-                 .attr("fill", d => colorScale(d.framework)) 
+                 .attr("fill", "#6495ED")
+                 //.attr("fill", d => colorScale(d.framework)) 
         
         container.selectAll("text")
                 .data(sources)
