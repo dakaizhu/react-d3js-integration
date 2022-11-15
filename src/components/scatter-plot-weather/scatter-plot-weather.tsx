@@ -125,7 +125,7 @@ export const WeatherScatterPlot : FC = () => {
         .attr('cy', d => yScale(yAccessor(datum)))
         .style('pointer-events', 'none') 
  
-      const ytop = yScale(yAccessor(datum)) + 50 + "px";
+      const ytop = yScale(yAccessor(datum)) + 160 + "px";
       const xleft = xScale(xAccessor(datum)) + 480 + "px";
  
       tooltip.style('opacity', 1)
